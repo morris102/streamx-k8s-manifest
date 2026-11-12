@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cms-portal-dev
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/streamx-k8s-manifest.git
+    targetRevision: main
+    path: helm/cms-portal
+
+  helm:
+    parameters: []
+    releaseName: cms-portal
+
+    valueFiles:
+      - values.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: streamx-dev
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
