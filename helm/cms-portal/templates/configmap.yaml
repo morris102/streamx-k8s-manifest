@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "cms-portal.fullname" . }}-config
+data:
+  DJANGO_SUPERUSER_USERNAME: {{ .Values.env.DJANGO_SUPERUSER_USERNAME | quote }}
+  DJANGO_SUPERUSER_EMAIL: {{ .Values.env.DJANGO_SUPERUSER_EMAIL | quote }}
+  DJANGO_SUPERUSER_PASSWORD: {{ .Values.env.DJANGO_SUPERUSER_PASSWORD | quote }}

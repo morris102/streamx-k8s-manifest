@@ -26,3 +26,15 @@ service:
   port: 8000
   targetPort: 8000
   protocol: TCP
+
+env:
+  DJANGO_SUPERUSER_USERNAME: admin
+  DJANGO_SUPERUSER_EMAIL: admin@example.com
+  DJANGO_SUPERUSER_PASSWORD: change-me
+
+secret:
+  DB_NAME: cms_portal
+  DB_USER: postgres
+  DB_PASSWORD: postgres
+  DB_HOST: postgres
+  DB_PORT: 5432
