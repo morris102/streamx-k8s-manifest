@@ -1,4 +1,11 @@
 {{/*
+Generate fullname
+*/}}
+{{- define "common.fullname" -}}
+{{- default .Release.Name .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/*
 Generate common labels
 */}}
 {{- define "common.labels" -}}
@@ -8,7 +15,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 
 {{/*
-Generate common selector labels
+Generate selector labels
 */}}
 {{- define "common.selectorLabels" -}}
 app.kubernetes.io/name: {{ .Chart.Name }}

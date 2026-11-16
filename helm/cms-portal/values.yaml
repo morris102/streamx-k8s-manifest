@@ -27,14 +27,32 @@ service:
   targetPort: 8000
   protocol: TCP
 
+# env variables for the application more information can be found here: https://docs.djangoproject.com/en/4.2/ref/django-admin/#createsuperuser
 env:
   DJANGO_SUPERUSER_USERNAME: admin
   DJANGO_SUPERUSER_EMAIL: admin@example.com
   DJANGO_SUPERUSER_PASSWORD: change-me
 
+# secrets for the application more information can be found here: https://docs.djangoproject.com/en/4.2/ref/django-admin/#createsuperuser
 secrets:
   DB_NAME: cms_portal
   DB_USER: postgres
   DB_PASSWORD: postgres
   DB_HOST: postgres
   DB_PORT: 5432
+
+# optional environment variables for the application
+envFrom:
+  - configMapRef:
+      name: cms-portal-config
+  - secretRef:
+      name: cms-portal-secret
+
+# required resources for the application more information can be found here: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+resources:
+  requests:
+    cpu: 200m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
