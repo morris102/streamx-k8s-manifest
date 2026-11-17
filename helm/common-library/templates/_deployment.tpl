@@ -40,6 +40,6 @@ spec:
 
           {{- with .Values.resources }}
           resources:
-            {{- toYaml . | nindent 6 }}
+            {{- toYaml . | nindent 12 }}
           {{- end }}
 {{- end }}
